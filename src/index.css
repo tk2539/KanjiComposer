@@ -1,0 +1,46 @@
+@import "tailwindcss";
+
+html, body, #root {
+  height: 100%;
+}
+
+/* ===== KanjiVG rendering tweaks (font-like look) ===== */
+.kanji-node svg { width: 100%; height: 100%; display: block; }
+
+/* 強制上書き：SVG内部の style/属性 まで潰す */
+.kanji-node svg *,
+.kanji-node svg [stroke],
+.kanji-node svg [style] {
+  fill: none !important;
+  stroke: #ffffff !important;
+  stroke-width: 3.5px !important;   /* 目で分かるくらい太く（検証用）*/
+  stroke-linecap: round !important;
+  stroke-linejoin: round !important;
+  vector-effect: non-scaling-stroke !important;
+}
+
+/* path は一応個別にも指定（念のため）*/
+.kanji-node svg path {
+  fill: none !important;
+  stroke: #ffffff !important;
+}
+
+/* グループにも色が付いているケースを上書き */
+.kanji-node svg g {
+  fill: none !important;
+  stroke: #ffffff !important;
+}
+
+/* ===== Mincho font renderer ===== */
+.font-mincho {
+  font-family: 'Noto Serif JP', 'Source Han Serif JP', 'Hiragino Mincho ProN', serif;
+  color: #fff;
+  font-weight: 700;
+  line-height: 1;
+  text-align: center;
+  display: grid;
+  place-items: center;
+  width: 100%;
+  height: 100%;
+  font-size: 72px; /* node内に収まるサイズ */
+}
